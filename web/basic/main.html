@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = 1050, user-scalable = no" />
+    <script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+    <script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <style>
+    h1 {
+		text-align: center;
+		font-size: 50px;
+        font-family: 'Patrick Hand', cursive;
+        float: center;
+	}
+
+	.two form {
+		margin-top: 300px;
+		margin-left: 150px;
+	}
+
+    .two > h2 {
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    table {
+        text-align: center;
+        font-size: 14px;
+        float: left;
+        margin-left: 20px;
+    }
+
+    h2, th, p, input {
+        font-family: 'Poor Story', cursive;
+    }
+
+    th {
+        color: white;
+        font-size: 20px;
+    }
+    
+    input {
+        width: 80%;
+        height: 40px;
+        border: 0;
+        border-radius: 50px;
+        background-color: rgb(233, 233, 233);
+        margin-top: 20px;
+        margin-left: 45px;
+        padding-left: 10px;
+    }
+
+    td {
+        color: white;
+    }
+
+    .a {
+        margin-left: 30px;
+    }
+
+    .back img {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 20px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="index.html"><img src="pages/back.png" alt=""></a>
+    </div>
+    <div class="flipbook-viewport one">
+        <div class="container">
+            <div class="flipbook">
+                <div style="background-image:url(pages/book1.PNG)"><h1>weather book</h1></div>
+                <div class="two" style="background-color: rgb(22, 126, 182);">
+                    <h2>목차</h2>
+                    <table>
+                        <tr><th>항목</th><th>번호</th></tr>
+                        <tr><td>여주</td><td>2370012300</td></tr>
+                        <tr><td>문막</td><td>2370014001</td></tr>
+                        <tr><td>문막1</td><td>2510030501</td></tr>
+                        <tr><td>원주(상)</td><td>2510051111</td></tr>
+                        <tr><td>새말</td><td>2580008700</td></tr>
+                        <tr><td>둔내</td><td>2580022700</td></tr>
+                        <tr><td>봉평터널(강릉)</td><td>2600022900</td></tr>
+                        <tr><td>평창휴게소(인천)</td><td>2600023901</td></tr>
+                        <tr><td>속사</td><td>2600030000</td></tr>
+                        <tr><td>횡계리</td><td>2600036101</td></tr>
+                        <tr><td>대관령</td><td>2600039300</td></tr>
+                        <tr><td>면온</td><td>2600016300</td></tr>
+                        <tr><td>적금정류장</td><td rowspan="8">2370013901</td></tr>
+                        <tr><td>홍호정류장</td></tr>
+                        <tr><td>후용리</td></tr>
+                        <tr><td>문막휴게소(인천)</td></tr>
+                        <tr><td>적금리</td></tr>
+                        <tr><td>강천리</td></tr>
+                        <tr><td>노림리1</td></tr>
+                        <tr><td>노림리</td></tr>
+                    </table>
+                    <table>
+                        <tr><th>항목</th><th>번호</th></tr>
+                        <tr><td>만종갈림목</td><td>2510048700</td></tr>
+                        <tr><td>강릉분기점</td><td>2520014001</td></tr>
+                        <tr><td>장평</td><td rowspan="3">2600023902</td></tr>
+                        <tr><td>평창휴게소(강릉)</td></tr>
+                        <tr><td>용전리</td></tr>
+                        <tr><td>진부</td><td rowspan="7">2600034701</td></tr>
+                        <tr><td>월정리</td></tr>
+                        <tr><td>유천리</td></tr>
+                        <tr><td>차향리</td></tr>
+                        <tr><td>진부리</td></tr>
+                        <tr><td>싸리재</td></tr>
+                        <tr><td>대관령</td></tr>
+                    </table>
+                </div>
+                <div>
+                    <h2>도로 날씨</h2>
+                    <form>
+                        <input name="linkid" id="linkid" type="text" placeholder="검색">
+                    </form>
+                    <p class="a"></p>
+                </div>
+                <div style="background-image:url(pages/book1_1.PNG)"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function loadApp() {
+
+            $('.flipbook').turn({
+
+                width: 922,
+
+                height: 600,
+
+                elevation: 50,
+
+                gradients: true,
+
+                autoCenter: true
+
+            });
+        }
+
+        yepnope({
+            test: Modernizr.csstransforms,
+            yep: ['../../lib/turn.js'],
+            nope: ['../../lib/turn.html4.min.js'],
+            both: ['css/basic.css'],
+            complete: loadApp
+        });
+
+        var ServiceKey = "ZahKFEc8DwHhwWPH7Oeo9Di4X2o219XN2ma1UPOvmSicvRWYrJfcqq2ZChERP3Y%2F%2FCkmNm6JdQdneeOIWwopmA%3D%3D";
+        var params = '?' + encodeURIComponent('ServiceKey') + '=' + ServiceKey;
+        params += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('31');
+        params += '&' + encodeURIComponent('hhCode') + '=' + encodeURIComponent('00');
+        //alert(params);
+
+        function getlinkid(id) {
+            var id = id ? id : "";
+            var url = 'http://bd.kma.go.kr/openAPI/roadweather/getStdNodeLinkInfo';
+            url += params
+            url += '&' + encodeURIComponent('stdLinkId') + '=' + encodeURIComponent(id);
+            console.log(url);
+            $.get(url, function (res) {
+                console.log(res);
+                var items = $(res).find("item");
+                for (var i = 0; i < items.length; i++) {
+                    var cctvId = $(items[i]).find("cctvId");
+                    var id = cctvId.text();
+                    var weatherNm = $(items[i]).find("weatherNm");
+                    var wname = weatherNm.text();
+                    var cctv = $(items[i]).find("cctvNm");
+                    var place = cctv.text();
+                    var sys = "<p value='" + id + "'>" + place + " / " + wname + "</p>";
+                    $('.a').append(sys);
+                }
+            });
+        }
+        getlinkid();
+
+        var linkid;
+        $("#linkid").on("change", function () {
+            linkid = $(this).val();
+            getlinkid(linkid);
+        });
+
+    </script>
+
+</body>
+
+</html>

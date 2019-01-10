@@ -1,0 +1,139 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* start */
+.mainbox {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.left {
+    width: 500px;
+    float: left;
+    font-family: 'Patrick Hand', cursive;
+}
+
+.left h1 {
+    font-size: 60px;
+    margin-top: 180px;
+}
+
+.left h1 a {
+    text-decoration: none;
+    text-align: center;
+    color: black;
+}
+
+.right {
+    width: 700px;
+    float: left;
+}
+
+.right img {
+    width: 650px;
+    height: 600px;
+    margin-top: 70px;
+}
+
+/* index */
+.container {
+    width: 800px;
+    margin: 50px auto;
+}
+
+header {
+    width: 100%;
+    height: 100px;
+}
+
+header h1 {
+    font-size: 40px;
+    text-align: center;
+}
+
+.group {
+    width: 150px;
+    height: 30px;
+    margin: 0 auto;
+}
+
+.group p {
+    font-size: 20px;
+    float: left;
+}
+
+.group img {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin: 5px 10px;
+}
+
+.book {
+    width: 100%;
+    margin-top: 30px;
+    margin-left: 40px;
+}
+
+.book img {
+    width: 150px;
+    height: 200px;
+    margin-left: 60px;
+    box-shadow: 5px 0 10px gray;
+}
+
+.top, .bottom {
+    width: 100%;
+    height: 200px;
+}
+
+.box {
+    width: 700px;
+    height: 10px;
+    background-color: rgb(196, 196, 196);
+    margin-bottom: 50px;
+}
+
+/* main2 */
+.main2 h1 {
+    text-align: center;
+	font-size: 50px;
+}   
+
+.two form {
+    margin-top: 300px;
+    margin-left: 150px;
+}
+
+.back img {
+    width: 50px;
+    height: 50px;
+    float: left;
+    margin: 20px;
+}
+
+.main2two select {
+    width: 100px;
+    height: 30px;
+    text-align: center;
+    margin: 20px 50px;
+}
+
+/* main4 */
+#mapwrap{position:relative;overflow:hidden;}
+.category, .category *{margin:0;padding:0;color:#000;}   
+.category {position:absolute;overflow:hidden;top:10px;left:10px;width:150px;height:50px;z-index:10;border:1px solid black;font-family:'Malgun Gothic','맑은 고딕',sans-serif;font-size:12px;text-align:center;background-color:#fff;}
+.category .menu_selected {background:#FF5F4A;color:#fff;border-left:1px solid #915B2F;border-right:1px solid #915B2F;margin:0 -1px;} 
+.category li{list-style:none;float:left;width:50px;height:45px;padding-top:5px;cursor:pointer;} 
+.category .ico_comm {display:block;margin:0 auto 2px;width:22px;height:26px;background:url('http://t1.daumcdn.net/localimg/localimages/07/mapapidoc/category.png') no-repeat;} 
+.category .ico_coffee {background-position:-10px 0;}  
+.category .ico_store {background-position:-10px -36px;}   
+.category .ico_carpark {background-position:-10px -72px;} 

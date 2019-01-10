@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width = 1050, user-scalable = no" />
+    <script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+    <script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+    <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+    <script type="text/javascript">
+    google.load("maps", "3.4", {
+    	other_params: "sensor=false&language=kr"
+    });
+</script>
+<script type="text/javascript" src="js/jquery.googlemap.js"></script>  
+    <style>
+    h1 {
+		text-align: center;
+		font-size: 50px;
+        float: center;
+	}
+
+	.two form {
+		margin-top: 300px;
+		margin-left: 150px;
+	}
+
+    .two > h2 {
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+    }
+
+    table {
+        text-align: center;
+        font-size: 14px;
+        float: left;
+        margin-left: 20px;
+    }
+
+    h2, th, p, input {
+        font-family: 'Poor Story', cursive;
+    }
+
+    th {
+        color: white;
+        font-size: 20px;
+    }
+    
+    input {
+        width: 80%;
+        height: 40px;
+        border: 0;
+        border-radius: 50px;
+        background-color: rgb(233, 233, 233);
+        margin-top: 20px;
+        margin-left: 45px;
+        padding-left: 10px;
+    }
+
+    td {
+        color: white;
+    }
+
+    .a {
+        margin-left: 30px;
+    }
+
+    .back img {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 20px;
+    }
+</style>
+</head>
+
+<body>
+    <div class="back">
+        <a href="index.html"><img src="pages/back.png" alt=""></a>
+    </div>
+    <div class="flipbook-viewport one">
+        <div class="container">
+            <div class="flipbook">
+                <div style="background-image:url(pages/book6.PNG)"><h1>weather book</h1></div>
+                <div id="map6" style="width: 500px; height: 300px;"></div>
+                <div id="navi"></div>
+                <div></div>
+            </div>    
+        </div>
+    </div>
+    <script type="text/javascript">
+
+        function loadApp() {
+
+            $('.flipbook').turn({
+
+                width: 922,
+
+                height: 600,
+
+                elevation: 50,
+
+                gradients: true,
+
+                autoCenter: true
+
+            });
+        }
+
+        yepnope({
+            test: Modernizr.csstransforms,
+            yep: ['../../lib/turn.js'],
+            nope: ['../../lib/turn.html4.min.js'],
+            both: ['css/basic.css'],
+            complete: loadApp
+        });
+
+        $(function() {
+    $("#map6").googleMap();
+    $("#map6").addWay({
+    	start: "15 avenue des champs Elysées 75008 Paris",
+		end:  [48.895651, 2.290569], 
+		route : 'navi', // Block's ID for the route display (optional)
+		langage : 'korean' // language of the route detail (optional)
+	});
+  })
+    </script>
+
+</body>
+
+</html>

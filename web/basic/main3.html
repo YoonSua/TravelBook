@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width = 1050, user-scalable = no" />
+	<script type="text/javascript" src="../../extras/jquery.min.1.7.js"></script>
+	<script type="text/javascript" src="../../extras/modernizr.2.5.3.min.js"></script>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/start/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.12.1.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Patrick+Hand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poor+Story" rel="stylesheet">
+<style>
+    * {
+        font-family: 'Poor Story', cursive;
+    }
+	h1 {
+		text-align: center;
+		font-size: 50px;
+        float: center;
+	}
+
+	.back img {
+        width: 50px;
+        height: 50px;
+        float: left;
+        margin: 20px;
+	}
+    
+    tr {
+        width: 440px;
+        margin: 0 auto;
+    }
+
+    th {
+        width: 110px;
+        text-align: center;
+        border: 1px solid black;
+    }
+
+    .input {
+        overflow: scroll;
+    }
+
+    .one {
+        color: white;
+    }
+
+    select {
+        width: 150px;
+        height: 30px;
+    }
+
+    .two > h2 {
+        font-size: 40px;
+        text-align: center;
+        color: white;
+    }
+
+    h2 {
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+	<div class="back">
+        <a href="index.html"><img src="pages/back.png" alt=""></a>
+    </div>
+<div class="flipbook-viewport">
+	<div class="container">
+		<div class="flipbook">
+			<div class="one" style="background-image:url(pages/book3.PNG)"><h1>place book</h1></div>
+			<div class="two" style="background-color: rgb(241, 197, 155);">
+                <h2>목차</h2s>
+				<form onsubmit="return false;" class="form-inline">
+					<select name="areaCode" id="areaCode" class="form-control">
+						<option value="">지역</option>
+					</select>
+				</form>
+			</div>
+			<div class="input">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>사진</th>
+                            <th>관광지명</th>
+                            <th>주소</th>
+                            <th>연락처</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                                
+                    </tbody>
+                </table>
+            </div>
+			<div></div>
+		</div>
+	</div>
+</div>
+
+<script type="text/javascript">
+
+function loadApp() {
+
+	$('.flipbook').turn({
+			
+			width:922,
+			
+			height:600,
+
+			elevation: 50,
+			
+			gradients: true,
+		
+			autoCenter: true
+
+	});
+}
+
+yepnope({
+	test : Modernizr.csstransforms,
+	yep: ['../../lib/turn.js'],
+	nope: ['../../lib/turn.html4.min.js'],
+	both: ['css/basic.css'],
+	complete: loadApp
+});
+
+	var ServiceKey = "ZahKFEc8DwHhwWPH7Oeo9Di4X2o219XN2ma1UPOvmSicvRWYrJfcqq2ZChERP3Y%2F%2FCkmNm6JdQdneeOIWwopmA%3D%3D";
+    var params = '?' + encodeURIComponent('ServiceKey') + '=' + ServiceKey;
+    params += '&' + encodeURIComponent('ServiceKey') + '=' + encodeURIComponent(ServiceKey);
+    params += '&' + encodeURIComponent('numOfRows') + '=' + encodeURIComponent('10'); /*한 페이지 결과 수*/
+    params += '&' + encodeURIComponent('pageNo') + '=' + encodeURIComponent('1'); /*현재 페이지 번호*/
+    params += '&' + encodeURIComponent('MobileOS') + '=' + encodeURIComponent('ETC'); /*IOS(아이폰),AND(안드로이드),WIN(원도우폰),ETC*/
+    params += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /*서비스명=어플명*/
+    params += '&' + encodeURIComponent('MobileApp') + '=' + encodeURIComponent('AppTest'); /*서비스명=어플명*/
+    params += '&' + encodeURIComponent('defaultYN') + '=' + encodeURIComponent('Y'); /*기본정보 조회여부*/
+    params += '&' + encodeURIComponent('firstImageYN') + '=' + encodeURIComponent('Y'); /*원본, 썸네일 대표이미지 조회여부*/
+    params += '&' + encodeURIComponent('areacodeYN') + '=' + encodeURIComponent('Y'); /*지역코드, 시군구코드 조회여부*/
+    params += '&' + encodeURIComponent('catcodeYN') + '=' + encodeURIComponent('Y'); /*대,중,소분류코드 조회여부*/
+    params += '&' + encodeURIComponent('addrinfoYN') + '=' + encodeURIComponent('Y'); /*주소, 상세주소 조회여부*/
+    params += '&' + encodeURIComponent('mapinfoYN') + '=' + encodeURIComponent('Y'); /*좌표 X,Y 조회여부*/
+    params += '&' + encodeURIComponent('overviewYN') + '=' + encodeURIComponent('Y'); /*콘텐츠 개요 조회여부*/
+
+	function getAreaCode(code) {
+        var code = code ? code : "";
+        var codeappend = code ? $("#sigunguCode") : $("#areaCode");
+        var url = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaCode';
+        url += params
+        url += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(code);
+        console.log(url);
+        $.get(url, function (res) {
+            console.log(res);
+            var items = $(res).find("item");
+            for (var i = 0; i < items.length; i++) {
+                var codeItem = $(items[i]).find("code");
+                var code = codeItem.text();
+                var nameItem = $(items[i]).find("name");
+                var name = nameItem.text();
+                var opt = "<option value='" + code + "'>" + name + "</option>";
+                codeappend.append(opt);
+            }
+        });
+    }
+    getAreaCode();
+
+	var areaCode;
+    $("#areaCode").on("change", function () {
+        areaCode = $(this).val();
+        getInfoList(areaCode);
+    });
+
+	function getInfoList(areaCode) {
+        var areaCode = areaCode ? areaCode : "";
+        var url = "http://api.visitkorea.or.kr/openapi/service/rest/KorService/areaBasedList";
+        url += params;
+        url += '&' + encodeURIComponent('areaCode') + '=' + encodeURIComponent(areaCode);
+            
+        $.get(url, function (res) {
+            var items = $(res).find("item");
+            for (var i = 0; i < items.length; i++) {
+                console.log(items[i]);
+                var title = $(items[i]).find("title").text();
+                var addr = $(items[i]).find("addr1").text() + " " + $(items[i]).find("addr2").text();
+                var tel = $(items[i]).find("tel").text();
+                var mapx = $(items[i]).find("mapx").text();
+                var mapy = $(items[i]).find("mapy").text();
+                var firstimage = $(items[i]).find("firstimage").text();
+                var contentid = $(items[i]).find("contentid").text();
+                var tr = "<tr onclick='viewDetail(\"" + contentid + "\");'>";
+                    tr += "<td><img src='" + firstimage + "' width='100' height='100'></td>";
+                    tr += "<td>" + title + "</td>";
+                    tr += "<td>" + addr + "</td>";
+                    tr += "<td>" + tel + "</td>";
+                    tr += "</tr>";
+                    $(".input table tbody").append(tr);
+            }
+        });
+    }
+</script>
+</body>
+</html>
